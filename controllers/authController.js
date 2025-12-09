@@ -3,7 +3,6 @@
 import validator from "validator";
 import { getDBConnection } from "../db/db.js";
 import bcrypt from "bcryptjs";
-import session from "express-session";
 
 export async function registerUser(req, res) {
   let { name, email, username, password } = req.body;
@@ -109,10 +108,7 @@ username: test
 password: test
 */
 export function logoutUser(req, res) {
-  req.session.destroy((err) => {
-    if (err) {
-      return res.status(500).json({ error: "Logout failed" });
-    }
-    res.json({ message: "Logged out" });
-  });
+  req.session.destroy();
+  res.json({ message: "Logged out" });
+  
 }
