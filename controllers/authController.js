@@ -108,7 +108,9 @@ username: test
 password: test
 */
 export function logoutUser(req, res) {
-  req.session.destroy();
-  res.json({ message: "Logged out" });
+  req.session.destroy(() => {
+    res.json({ message: "Logged out" });
+  });
+  
   
 }
