@@ -338,7 +338,7 @@ button:active {
 .sign-forms {
     display: flex;
     flex-direction: column;
-    max-width: 50%;
+    max-width: 350px;
     margin: 0 auto;
 }
 
