@@ -25,7 +25,7 @@ export function addBtnListeners() {
 
 export async function updateCartIcon() {
   try {
-    const res = await fetch('/api/cart/cart-count')
+    const res = await fetch('/api/cart/cart-count', { credentials: 'include'})
     const obj = await res.json()
     const totalItems = obj.totalItems
 
@@ -103,7 +103,7 @@ export async function removeItem(itemId, dom) {
       credentials: 'include',
     })
 
-    if (res.status === 204) {
+    if (res.ok) {
       await loadCart(dom)
     } else {
       console.error('Error removing item:', await res.text())
